@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+  <link rel="icon" href="assets/img/favicon2.png" type="image/gif" sizes="16x16">
+  <meta name="google-site-verification" content="3cITVPefT6brenajjZSzmliHWWBZPJK3zELuh3nf2f4" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Movie Analysis</title>
+  <link rel="stylesheet" href="assets/css/color.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
+  <link href="../../cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+</head>
+<body>
+
+
+  <header class="main-header">
+    <div class="container">
+      <div class="row personal-profile">
+        <div class="col-md-4 personal-profile__avatar">
+          <img class="" src='{{result["poster"]}}' alt="avatar">
+        </div>
+        <div class="col-md-8">
+          <p class="personal-profile__name">{{result["title"]}} ({{result["year"]}})</p>
+          <p class="personal-profile__work">Description: Updating Soon.</p>
+          <div class="personal-profile__contacts">
+            <dl class="contact-list contact-list__opacity-titles">
+              <dt>Rating:</dt>
+              <dd>Updating Soon</dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!--Resume-->
+  <section id="resume" class="container section">
+
+
+<div class="row section__resume progress-list js-progress-list">
+      <div class="col-md-12">
+        <h2 id="resume_header" class="section__title">Analysis</h2>
+      </div>
+      <div class="col-md-5 mr-auto">
+        <div class="progress-list__skill">
+          <p>
+            <span class="progress-list__skill-title">Inappropriate Scenes ({{result["nudity"]["type"]}})</span>
+            <span class="progress-list__skill-value">{{result["nudity"]["percentage"]}}%</span>
+          </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow='{{result["nudity"]["percentage"]}}' aria-valuemin="0" aria-valuemax="100" >
+            </div>
+          </div>
+        </div>
+        <div class="progress-list__skill">
+          <p>
+            <span class="progress-list__skill-title">Voilence ({{result["voilence"]["type"]}})</span>
+            <span class="progress-list__skill-value">{{result["voilence"]["percentage"]}}%</span>
+          </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow='{{result["voilence"]["percentage"]}}' aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+        <div class="progress-list__skill">
+          <p>
+            <span class="progress-list__skill-title">Profanity ({{result["profanity"]["type"]}})</span>
+            <span class="progress-list__skill-value">{{result["profanity"]["percentage"]}}%</span>
+          </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow='{{result["profanity"]["percentage"]}}' aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+        <div class="progress-list__skill">
+          <p>
+            <span class="progress-list__skill-title">Alcohol, Drugs & Smoking ({{result["alcohol"]["type"]}})</span>
+            <span class="progress-list__skill-value">{{result["alcohol"]["percentage"]}}%</span>
+          </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow='{{result["alcohol"]["percentage"]}}' aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 mr-auto">
+        <div class="progress-list__skill">
+          <p>
+            <span class="progress-list__skill-title">Frightening & Intense Scenes ({{result["frightening"]["type"]}})</span>
+            <span class="progress-list__skill-value">{{result["frightening"]["percentage"]}}%</span>
+          </p>
+          <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow='{{result["frightening"]["percentage"]}}' aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!--
+    <div class="row">
+      <div class="col-md-10">
+        <h3 id="resume_header" class="section__title">Description</h3>
+        <p class="section__description">
+          Demo Text
+        </p>
+      </div>
+    </div>
+-->
+    <div class="row">
+      <div class="col-md-8 section__resume resume-list">
+        <h3 id="resume_header" class="section__title">Detailed Information</h3>
+        <div class="resume-list__block">
+          <p class="resume-list__block-title">{{result["voilence"]["category"]}}</p>
+          {% for i in result["voilence"]["details"] %}
+          <p>
+            {{i}}
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+        <div class="resume-list__block">
+          <p class="resume-list__block-title">{{result["profanity"]["category"]}}</p>
+          {% for i in result["profanity"]["details"] %}
+          <p>
+            {{i}}
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+        <div class="resume-list__block">
+          <p class="resume-list__block-title">{{result["alcohol"]["category"]}}</p>
+          {% for i in result["profanity"]["details"] %}
+          <p>
+            {{i}}
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+        <div class="resume-list__block">
+          <p class="resume-list__block-title">{{result["frightening"]["category"]}}</p>
+          {% for i in result["profanity"]["details"] %}
+          <p>
+            {{i}}
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+        <div class="resume-list__block">
+          <p class="resume-list__block-title">Inappropriate Scenes</p>
+          {% for i in result["nudity"]["details"] %}
+          <p>
+            {{i}}
+          </p>
+          <br>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    </div>
+    
+  </section>
+
+  <script src="./assets/js/jquery-2.2.4.min.js"></script>
+  <script src="./assets/js/popper.min.js"></script>
+  <script src="./assets/js/bootstrap.min.js"></script>
+  <script src="./assets/js/menu.js"></script>
+  <script src="./assets/js/jquery.waypoints.js"></script>
+  <script src="./assets/js/progress-list.js"></script>
+  <script src="./assets/js/section.js"></script>
+  <script src="./assets/js/portfolio-filter.js"></script>
+  <script src="./assets/js/slider-carousel.js"></script>
+  <script src="./assets/js/mobile-menu.js"></script>
+  <script src="./assets/js/contacts.js"></script>
+  <script src="./assets/js/mbclicker.min.js"></script>
+  <script src="./assets/js/site-btn.js"></script>
+
+
+</body>
+</html>
